@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:orderInCategory="100"
+        android:title="Items One"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/one"
+                android:icon="@drawable/ic_home"
+                android:title="Home"
+                />
+
+            <item
+                android:id="@+id/two"
+                android:icon="@drawable/ic_settings"
+                android:title="Setting" />
+
+            <item
+                android:id="@+id/three"
+                android:icon="@drawable/ic_call"
+                android:title="Call" />
+
+            <item
+                android:id="@+id/four"
+                android:icon="@drawable/ic_power"
+                android:title="Log Out" />
+        </menu>
+    </item>
+
+    <item
+        android:orderInCategory="100"
+        android:title="Items Two"
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/threeItems"
+                android:icon="@drawable/ic_call"
+                android:title="Call" />
+
+            <item
+                android:id="@+id/twoItems"
+                android:icon="@drawable/ic_settings"
+                android:title="Setting" />
+
+            <item
+                android:id="@+id/fourItems"
+                android:icon="@drawable/ic_power"
+                android:title="Log Out" />
+
+            <item
+                android:id="@+id/oneItems"
+                android:icon="@drawable/ic_home"
+                android:title="Home"
+                />
+
+        </menu>
+    </item>
+
+
+</menu>
