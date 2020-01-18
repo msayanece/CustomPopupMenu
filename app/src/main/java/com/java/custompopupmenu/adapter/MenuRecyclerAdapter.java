@@ -16,7 +16,6 @@ import com.java.custompopupmenu.model.PopupItem;
 import java.util.List;
 
 public class MenuRecyclerAdapter extends RecyclerView.Adapter<MenuRecyclerAdapter.MenuRecyclerViewHolder> {
-
     private Activity activity;
     private List<PopupItem> popupItems;
     private boolean activeCardView = false;
@@ -69,11 +68,9 @@ public class MenuRecyclerAdapter extends RecyclerView.Adapter<MenuRecyclerAdapte
     }
 
     class MenuRecyclerViewHolder extends RecyclerView.ViewHolder {
-
         private ImageView mImage;
         private TextView mName;
         private TextView mBorder;
-
 
         MenuRecyclerViewHolder(View itemView) {
             super(itemView);
@@ -84,5 +81,4 @@ public class MenuRecyclerAdapter extends RecyclerView.Adapter<MenuRecyclerAdapte
             }
         }
     }
-
 }
