@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 customPopupMenu.setOnClickListener(new CustomPopupMenu.PopupMenuClickListener() {
                     @Override
                     public void onClick(int position) {
-                        Toast.makeText(MainActivity.this,popupItems.get(position).getId(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,popupItems.get(position).getItemName(),Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -73,7 +73,14 @@ public class MainActivity extends AppCompatActivity {
         menuThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                CustomPopupMenu customPopupMenu = new CustomPopupMenu(MainActivity.this,menuTwo,popupItems,true);
+                customPopupMenu.showPopupMenu();
+                customPopupMenu.setOnClickListener(new CustomPopupMenu.PopupMenuClickListener() {
+                    @Override
+                    public void onClick(int position) {
+                        Toast.makeText(MainActivity.this,popupItems.get(position).getItemName(),Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
