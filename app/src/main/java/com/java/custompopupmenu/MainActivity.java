@@ -61,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 CustomPopupMenu customPopupMenu = new CustomPopupMenu(MainActivity.this,menuTwo,popupItems);
                 customPopupMenu.showPopupMenu();
+                customPopupMenu.setOnClickListener(new CustomPopupMenu.PopupMenuClickListener() {
+                    @Override
+                    public void onClick(int position) {
+                        Toast.makeText(MainActivity.this,popupItems.get(position).getId(),Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 

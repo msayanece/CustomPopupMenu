@@ -26,6 +26,7 @@ public class CustomPopupMenu {
     private List<PopupItem> popupItems;
     private PopupWindow popupWindow;
     private ImageView menuIcon;
+    private static PopupMenuClickListener onClickListener;
 
     public CustomPopupMenu(Activity activity, ImageView menuIcon, List<PopupItem> popupItems) {
         this.activity = activity;
@@ -36,9 +37,10 @@ public class CustomPopupMenu {
     public void showPopupMenu(){
         popupWindow = generatePopupMenuWithIcon();
         popupWindow.showAsDropDown(menuIcon, -40, 18); // where u want show on view click event popupWindow.showAsDropDown(view, x, y);
+        popupMenuOnClickListener();
     }
 
-    public PopupWindow generatePopupMenuWithIcon() {
+    private PopupWindow generatePopupMenuWithIcon() {
         popupWindow = new PopupWindow(activity);
 //        inflate your layout or dynamically add view
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -51,7 +53,6 @@ public class CustomPopupMenu {
         popupWindow.setContentView(view);
         popupWindow.setBackgroundDrawable(null);
         popupWindow.setTouchable(true);
-        popupMenuOnClickListener();
         return popupWindow;
     }
 
@@ -67,16 +68,24 @@ public class CustomPopupMenu {
         mMenuRecycler.addOnItemTouchListener(new RecyclerItemClickListener(activity, mMenuRecycler, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(final View view, final int position, MotionEvent motionEvent) {
-                Toast.makeText(activity,popupItems.get(position).getItemName(),Toast.LENGTH_SHORT).show();
+                onClickListener.onClick(position);
                 popupWindow.dismiss();
             }
 
             @Override
             public void onLongItemClick(View view, int position) {  }
 
-
         }));
 
+    }
+
+    public interface PopupMenuClickListener {
+        void onClick(int position);
+    }
+
+    public CustomPopupMenu setOnClickListener(PopupMenuClickListener onClickListener) {
+        CustomPopupMenu.onClickListener = onClickListener;
+        return this;
     }
 
 }
