@@ -25,11 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initializeView();
         setData();
         onClickListener();
-
     }
 
     private void initializeView() {
@@ -61,13 +59,26 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 CustomPopupMenu customPopupMenu = new CustomPopupMenu(MainActivity.this,menuTwo,popupItems);
                 customPopupMenu.showPopupMenu();
+                customPopupMenu.setOnClickListener(new CustomPopupMenu.PopupMenuClickListener() {
+                    @Override
+                    public void onClick(int position) {
+                        Toast.makeText(MainActivity.this,popupItems.get(position).getItemName(),Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
         menuThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                CustomPopupMenu customPopupMenu = new CustomPopupMenu(MainActivity.this,menuTwo,popupItems,true);
+                customPopupMenu.showPopupMenu();
+                customPopupMenu.setOnClickListener(new CustomPopupMenu.PopupMenuClickListener() {
+                    @Override
+                    public void onClick(int position) {
+                        Toast.makeText(MainActivity.this,popupItems.get(position).getItemName(),Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
